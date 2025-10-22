@@ -31,7 +31,7 @@ export function GenerateButton({ onClick, disabled, loading }: GenerateButtonPro
 
         <span className="relative flex items-center gap-3">
           <Sparkles className={cn('w-6 h-6', loading && 'animate-spin')} />
-          {loading ? 'Generating...' : 'Generate Excuse'}
+          {loading ? 'بفكرلك...' : 'أعذرني'}
         </span>
 
         {!disabled && !loading && (

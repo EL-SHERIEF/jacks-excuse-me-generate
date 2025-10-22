@@ -1,15 +1,15 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Almarai } from 'next/font/google';
 import { Toaster } from '@/components/ui/sonner';
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] });
+const almarai = Almarai({ subsets: ['arabic'], weight: ['300', '400', '700', '800'] });
 
 export const metadata: Metadata = {
-  title: 'Excuse Generator - AI-Powered Egyptian Freelancer Excuses',
-  description: 'Generate hilarious and creative Egyptian Arabic excuses with Google Gemini. Choose from funny, believable, or dramatic tones. For entertainment purposes only.',
-  keywords: ['excuse generator', 'egyptian arabic', 'freelancer', 'AI', 'gemini', 'humor'],
-  authors: [{ name: 'Excuse Generator' }],
+  title: 'مولد الأعذار - أعذار فريلانسر مصري بالذكاء الاصطناعي',
+  description: 'مولد أعذار باللهجة المصرية للفريلانسرز. اختار بين الأعذار المضحكة، المقنعة، أو الدرامية. مدعوم بتقنية جوجل جيميناي للذكاء الاصطناعي.',
+  keywords: ['مولد الأعذار', 'أعذار مصرية', 'فريلانسر', 'ذكاء اصطناعي', 'جيميناي', 'مضحك', 'أعذار العمل', 'فري لانس مصر'],
+  authors: [{ name: 'مولد الأعذار' }],
   openGraph: {
     title: 'Excuse Generator - AI-Powered Egyptian Freelancer Excuses',
     description: 'Generate hilarious and creative Egyptian Arabic excuses with Google Gemini',
@@ -28,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="ar" dir="rtl">
+      <body className={almarai.className}>
         {children}
         <Toaster position="top-center" richColors />
       </body>

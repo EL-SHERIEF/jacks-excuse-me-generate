@@ -1,0 +1,25 @@
+{
+  "name": "مولد الأعذار - أعذار فريلانسر مصري",
+  "short_name": "مولد الأعذار",
+  "description": "مولد أعذار باللهجة المصرية للفريلانسرز. اختار بين الأعذار المضحكة، المقنعة، أو الدرامية.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ec4899",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["utilities", "entertainment"],
+  "orientation": "any"
+}

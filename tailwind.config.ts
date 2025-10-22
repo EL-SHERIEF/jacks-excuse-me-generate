@@ -8,6 +8,16 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Almarai', 'sans-serif'],
+      heading: ['Almarai', 'sans-serif'],
+    },
+    fontWeight: {
+      light: '300',
+      normal: '400',
+      bold: '700',
+      extrabold: '800',
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

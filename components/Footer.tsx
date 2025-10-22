@@ -16,32 +16,32 @@ export function Footer() {
           <div className="flex items-center justify-center gap-2 text-gray-400">
             <Code className="w-4 h-4" />
             <span className="text-sm">
-              Built with Next.js, Google Gemini, Supabase & Framer Motion
+              تم التطوير باستخدام Next.js و Google Gemini و Supabase و Framer Motion
             </span>
           </div>
 
           <div className="flex items-center justify-center gap-2 text-gray-400">
             <Heart className="w-4 h-4 text-pink-500 fill-current" />
             <span className="text-sm">
-              Made for freelancers who need a creative break
+              تم التصميم للفريلانسرز اللي محتاجين بريك إبداعي
             </span>
           </div>
 
           <div className="flex items-center justify-center gap-2 text-yellow-500">
             <Shield className="w-4 h-4" />
             <span className="text-xs">
-              For entertainment and educational purposes only
+              للترفيه والتعليم فقط
             </span>
           </div>
 
           <div className="text-xs text-gray-600 max-w-2xl mx-auto">
-            This app generates fictional excuses using AI. All content is for humor and
-            learning about communication patterns. Always be honest and professional in
-            real-world situations. Never use these excuses to deceive others.
+            هذا التطبيق يقوم بتوليد أعذار خيالية باستخدام الذكاء الاصطناعي. كل المحتوى للفكاهة
+            وتعلم أنماط التواصل. يرجى دائماً التحلي بالصدق والمهنية في المواقف الحقيقية. لا تستخدم
+            هذه الأعذار لخداع الآخرين.
           </div>
 
           <div className="text-xs text-gray-700">
-            Powered by Google Gemini © {new Date().getFullYear()}
+            مدعوم بتقنية Google Gemini © {new Date().getFullYear()}
           </div>
         </div>
       </div>

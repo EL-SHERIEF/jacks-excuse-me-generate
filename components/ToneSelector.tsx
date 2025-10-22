@@ -14,7 +14,7 @@ const tones = [
     id: 'funny',
     title: 'Funny',
     arabicTitle: 'مضحك',
-    description: 'Over-the-top hilarious excuses',
+      description: 'أعذار مضحكة وكوميدية جداً',
     icon: Laugh,
     gradient: 'from-pink-500 to-rose-500',
   },
@@ -22,7 +22,7 @@ const tones = [
     id: 'believable',
     title: 'Believable',
     arabicTitle: 'مقنع',
-    description: 'Realistic, professional excuses',
+    description: 'أعذار واقعية ومحترمة',
     icon: Briefcase,
     gradient: 'from-blue-500 to-cyan-500',
   },
@@ -30,7 +30,7 @@ const tones = [
     id: 'dramatic',
     title: 'Dramatic',
     arabicTitle: 'درامي',
-    description: 'Theatrical, emotional excuses',
+    description: 'أعذار درامية ومؤثرة',
     icon: Drama,
     gradient: 'from-purple-500 to-pink-500',
   },
@@ -44,7 +44,7 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
         animate={{ opacity: 1 }}
         className="text-2xl md:text-3xl font-bold text-center mb-8 text-white"
       >
-        Choose Your Tone
+        اختار نوع العذر
       </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -84,7 +84,6 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
                   </h3>
                   <p
                     className="text-lg text-gray-400 mb-2"
-                    style={{ fontFamily: 'Arial, sans-serif' }}
                   >
                     {tone.arabicTitle}
                   </p>

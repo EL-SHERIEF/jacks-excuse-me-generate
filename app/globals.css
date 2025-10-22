@@ -81,6 +81,20 @@
     background: linear-gradient(135deg, #0a0a0a 0%, #150e2b 100%);
     background-attachment: fixed;
     min-height: 100vh;
+    font-family: 'Almarai', sans-serif !important;
+  }
+  p{
+        font-family: 'Almarai', sans-serif !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 700;
+  }
+  
+  button, input, select, textarea {
+    font-family: 'Almarai', sans-serif;
+    font-weight: 400;
   }
 }
 

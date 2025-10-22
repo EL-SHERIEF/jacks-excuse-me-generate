@@ -29,7 +29,7 @@ export default function Home() {
 
   const handleGenerate = async () => {
     if (!selectedTone) {
-      toast.error('Please select a tone first!');
+      toast.error('من فضلك اختار نوع العذر الأول!');
       return;
     }
 
@@ -79,22 +79,22 @@ export default function Home() {
 
       if (newCount === 5) {
         setTimeout(() => {
-          toast.info('Wow, 5 excuses already? You might need a real break!', {
+          toast.info('يا نهار! 5 أعذار؟ شكلك محتاج بريك حقيقي!', {
             duration: 5000,
           });
         }, 1000);
       } else if (newCount === 10) {
         setTimeout(() => {
-          toast.info('10 excuses?! Time to get back to work... or generate another one!', {
+          toast.info('10 أعذار؟! يلا نرجع نشتغل... ولا نولد عذر تاني؟!', {
             duration: 5000,
           });
         }, 1000);
       }
 
-      toast.success('Excuse generated!');
+      toast.success('تم توليد العذر!');
     } catch (error) {
       console.error('Error generating excuse:', error);
-      toast.error('Failed to generate excuse. Please try again.');
+      toast.error('حدث خطأ في توليد العذر. من فضلك حاول مرة تانية.');
     } finally {
       setLoading(false);
     }

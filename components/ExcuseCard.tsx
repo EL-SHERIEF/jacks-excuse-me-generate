@@ -21,7 +21,7 @@ export function ExcuseCard({ excuse, excuseId, onReaction }: ExcuseCardProps) {
       <div className="bg-gray-900/70 backdrop-blur-sm rounded-2xl p-8 neon-border">
         <div className="mb-6">
           <h3 className="text-sm text-gray-400 mb-3 uppercase tracking-wide">
-            Your Excuse
+            عذرك:
           </h3>
           <p
             className="text-3xl md:text-4xl font-bold text-white leading-relaxed"

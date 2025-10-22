@@ -40,7 +40,7 @@ export function Leaderboard() {
       <div className="w-full max-w-5xl mx-auto px-4 py-8">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-white flex items-center justify-center gap-2">
           <Trophy className="w-8 h-8 text-yellow-500" />
-          Top Excuses
+          أقوى الأعذار
         </h2>
         <div className="text-center text-gray-400">Loading...</div>
       </div>
@@ -52,7 +52,7 @@ export function Leaderboard() {
       <div className="w-full max-w-5xl mx-auto px-4 py-8">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-white flex items-center justify-center gap-2">
           <Trophy className="w-8 h-8 text-yellow-500" />
-          Top Excuses
+          أقوى الأعذار
         </h2>
         <div className="text-center text-gray-400">
           <p>No excuses yet. Be the first to generate one!</p>
@@ -107,11 +107,11 @@ export function Leaderboard() {
       >
         <h2 className="text-2xl md:text-3xl font-bold text-white flex items-center justify-center gap-2">
           <Trophy className="w-8 h-8 text-yellow-500" />
-          Top Excuses
+          أقوى الأعذار
           <TrendingUp className="w-6 h-6 text-green-500" />
         </h2>
         <p className="text-gray-400">
-          Total excuses generated: <span className="font-bold text-white">{totalCount}</span>
+          عدد الأعذار الي إتعملت على الأبليكيشن: <span className="font-bold text-white">{totalCount}</span>
         </p>
       </motion.div>
 
@@ -229,7 +229,7 @@ export function Leaderboard() {
                         />
                       </motion.div>
                       <span className="text-sm font-medium pt-2">
-                        {expandedExcuse === excuse.id ? 'Show less' : 'Read more'}
+                        {expandedExcuse === excuse.id ? 'عرض الأقل' : 'عرض المزيد'}
                       </span>
                     </motion.div>
                   </motion.div>
