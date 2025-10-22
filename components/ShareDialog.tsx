@@ -51,7 +51,7 @@ export function ShareDialog({ isOpen, onClose, excuse }: ShareDialogProps) {
         <DialogHeader>
           <DialogTitle className="text-xl text-gray-200">Share Excuse</DialogTitle>
           <DialogDescription className="text-gray-400">
-            Choose where you want to share this excuse
+            اختار عايز تشارك العذر دا فين:
           </DialogDescription>
         </DialogHeader>
         <div className="grid grid-cols-2 gap-4 py-4">
@@ -62,7 +62,7 @@ export function ShareDialog({ isOpen, onClose, excuse }: ShareDialogProps) {
             className="flex items-center gap-3 p-4 rounded-lg bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/50 transition-colors"
           >
             <TwitterIcon className="w-5 h-5 text-blue-400" />
-            <span className="text-blue-400">Twitter</span>
+            <span className="text-blue-400">تويتر(x)</span>
           </motion.button>
 
           <motion.button
@@ -72,7 +72,7 @@ export function ShareDialog({ isOpen, onClose, excuse }: ShareDialogProps) {
             className="flex items-center gap-3 p-4 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/50 transition-colors"
           >
             <FacebookIcon className="w-5 h-5 text-indigo-400" />
-            <span className="text-indigo-400">Facebook</span>
+            <span className="text-indigo-400">فيسبوك</span>
           </motion.button>
 
           <motion.button
@@ -82,7 +82,7 @@ export function ShareDialog({ isOpen, onClose, excuse }: ShareDialogProps) {
             className="flex items-center gap-3 p-4 rounded-lg bg-green-500/20 hover:bg-green-500/30 border border-green-500/50 transition-colors"
           >
             <Share className="w-5 h-5 text-green-400" />
-            <span className="text-green-400">WhatsApp</span>
+            <span className="text-green-400">واتساب</span>
           </motion.button>
 
           <motion.button
@@ -92,7 +92,7 @@ export function ShareDialog({ isOpen, onClose, excuse }: ShareDialogProps) {
             className="flex items-center gap-3 p-4 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/50 transition-colors"
           >
             <Copy className="w-5 h-5 text-purple-400" />
-            <span className="text-purple-400">Copy Link</span>
+            <span className="text-purple-400">نسخ الرابط</span>
           </motion.button>
         </div>
       </DialogContent>
