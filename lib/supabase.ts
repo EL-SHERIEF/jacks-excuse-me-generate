@@ -9,7 +9,6 @@ export interface Excuse {
   id: string;
   tone: 'funny' | 'believable' | 'dramatic';
   excuse_text: string;
-  excuse_tips: string;
   likes_count: number;
   shares_count: number;
   copies_count: number;
@@ -76,12 +75,7 @@ export async function incrementExcuseCount(excuseId: string, countType: 'likes_c
 }
 
 export async function saveInteraction(interaction: Omit<Interaction, 'id' | 'created_at'>): Promise<void> {
-  const { error } = await supabase
+  await supabase
     .from('interactions')
     .insert([interaction]);
-  
-  if (error) {
-    console.error('Error saving interaction:', error);
-    throw new Error(`Failed to save interaction: ${error.message}`);
-  }
 }

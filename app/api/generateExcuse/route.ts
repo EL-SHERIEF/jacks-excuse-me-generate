@@ -39,32 +39,6 @@ async function generateExcuseText(tone: string, excuseType: string): Promise<str
   }
 }
 
-// توليد نصائح العذر بدون Ethical أو Fun Tip
-async function generateExcuseTips(excuse: string, tone: string): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-
-  try {
-    const prompt = `اعتمادًا على هذا العذر: "${excuse}" (بالنبرة: ${tone})
-    بدون أي مقدمات إبدأ علطول
-اعمل تحليل تعليمي ازاي الفريلانسر يستخدم العذر دا:
-- تحليل:  جمل على الأقل عن سبب العذر وكيف يؤثر على العميل وكيفية جعله متفهمًا(بحد أقصى 3 جمل).
-- طريقة استخدام العذر في السياق: طرق عملية لاستخدام العذر بشكل مهني ودبلوماسي مع العميل(بحد أقصى 4 جمل).
-- إمتى تستخدم العذر دا: علامات توضح متى يكون العذر مناسب للاستخدام(بحد أقصى 10 جمل)
-خلي النصائح موجهة للفريلانسر.`;
-
-    const result = await model.generateContent(prompt);
-    if (!result.response) throw new Error('No response from Gemini API');
-
-    const text = result.response.text().trim();
-    if (!text) throw new Error('Empty response from Gemini API');
-
-    return text;
-  } catch (error: any) {
-    console.error('Error in generateExcuseTips:', error);
-    throw new Error(`Failed to generate excuse tips: ${error.message}`);
-  }
-}
-
 export async function POST(request: NextRequest) {
   try {
     const { tone, excuseType } = await request.json();
@@ -90,20 +64,16 @@ export async function POST(request: NextRequest) {
     // توليد العذر
     const excuseText = await generateExcuseText(tone, excuseType);
 
-    // توليد النصائح
-    const excuseTips = await generateExcuseTips(excuseText, tone);
 
     // حفظ العذر في Supabase
     const savedExcuse = await saveExcuse({
       tone: tone as 'funny' | 'believable' | 'dramatic',
       excuse_text: excuseText,
-      excuse_tips: excuseTips,
       user_id: undefined
     });
 
     return NextResponse.json({
       excuse: excuseText,
-      tips: excuseTips,
       excuseId: savedExcuse?.id
     });
 
