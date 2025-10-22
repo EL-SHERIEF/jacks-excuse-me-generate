@@ -52,7 +52,7 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
       setLiked(true);
       onReaction('like');
       triggerConfetti();
-      toast.success('Excuse liked!');
+      toast.success('تم تسجيل الإعجاب بالعذر!');
     }
   };
 
@@ -64,9 +64,9 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
 
       triggerConfetti();
       onReaction('copy');
-      toast.success('Excuse copied to clipboard!');
+      toast.success('تم نسخ العذر إلى الحافظة!');
     } catch (error) {
-      toast.error('Failed to copy excuse');
+      toast.error('فشل نسخ العذر');
     }
   };
 
@@ -102,12 +102,12 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
           {copied ? (
             <div className="flex items-center gap-2">
               <Check className="w-5 h-5" />
-              <span>Copied!</span>
+              <span>تم النسخ!</span>
             </div>
           ) : (
             <div className="flex items-center gap-2">
               <Copy className="w-5 h-5" />
-              <span>Copy</span>
+              <span>نسخ</span>
             </div>
           )}
         </motion.button>
@@ -119,7 +119,7 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
           className="flex items-center gap-2 px-6 py-3 rounded-full font-medium bg-gray-800 text-gray-300 border-2 border-gray-700 hover:border-purple-500 hover:text-purple-400 transition-all"
         >
           <Share2 className="w-5 h-5" />
-          <span>Share</span>
+          <span>شارك</span>
         </motion.button>
       </div>
 
