@@ -14,19 +14,34 @@ const TONE_DESCRIPTIONS = {
 
 async function generateExcuseText(tone: string): Promise<string> {
   const toneDesc = TONE_DESCRIPTIONS[tone as keyof typeof TONE_DESCRIPTIONS] || 'creative and witty';
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  // Use the Gemini Pro text model
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-  const prompt = `You are a witty AI humorist specializing in Egyptian workplace culture. Generate a ${toneDesc} freelancer excuse in natural Egyptian Arabic (not formal Arabic - use real Egyptian dialect). The excuse should be 1-2 sentences maximum, sound completely natural and human-like, and include typical Egyptian expressions or cultural references. Make it witty and authentic to how Egyptians actually speak. Only return the excuse text, nothing else.`;
+  try {
+    const prompt = `You are a witty AI humorist specializing in Egyptian workplace culture. Generate a ${toneDesc} freelancer excuse in natural Egyptian Arabic (not formal Arabic - use real Egyptian dialect). The excuse should be 1-2 sentences maximum, sound completely natural and human-like, and include typical Egyptian expressions or cultural references. Make it witty and authentic to how Egyptians actually speak. Only return the excuse text, nothing else.`;
 
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  return response.text().trim();
+    const result = await model.generateContent(prompt);
+    if (!result.response) {
+      throw new Error('No response from Gemini API');
+    }
+    const response = result.response;
+    const text = response.text().trim();
+    if (!text) {
+      throw new Error('Empty response from Gemini API');
+    }
+    return text;
+  } catch (error: any) {
+    console.error('Error in generateExcuseText:', error);
+    throw new Error(`Failed to generate excuse text: ${error.message}`);
+  }
 }
 
 async function generateExcuseTips(excuse: string, tone: string): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  // Use the Gemini Pro text model
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-  const prompt = `Given this fictional excuse: "${excuse}" (tone: ${tone})
+  try {
+    const prompt = `Given this fictional excuse: "${excuse}" (tone: ${tone})
 
 Create fictional "Excuse Tips" - an educational breakdown that helps people recognize communication patterns. Format it as follows:
 
@@ -49,9 +64,20 @@ A lighthearted observation about communication or workplace culture (1 sentence)
 
 Keep the tone educational and analytical. This is fictional content for training purposes only.`;
 
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  return response.text().trim();
+    const result = await model.generateContent(prompt);
+    if (!result.response) {
+      throw new Error('No response from Gemini API');
+    }
+    const response = result.response;
+    const text = response.text().trim();
+    if (!text) {
+      throw new Error('Empty response from Gemini API');
+    }
+    return text;
+  } catch (error: any) {
+    console.error('Error in generateExcuseTips:', error);
+    throw new Error(`Failed to generate excuse tips: ${error.message}`);
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -94,8 +120,12 @@ export async function POST(request: NextRequest) {
 
   } catch (error: any) {
     console.error('Error generating excuse:', error);
+    const errorMessage = error.message || 'Unknown error occurred';
     return NextResponse.json(
-      { error: 'Failed to generate excuse. Please try again.' },
+      { 
+        error: `Failed to generate excuse: ${errorMessage}. Please try again.`,
+        details: error.toString()
+      },
       { status: 500 }
     );
   }
