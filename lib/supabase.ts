@@ -76,7 +76,12 @@ export async function incrementExcuseCount(excuseId: string, countType: 'likes_c
 }
 
 export async function saveInteraction(interaction: Omit<Interaction, 'id' | 'created_at'>): Promise<void> {
-  await supabase
+  const { error } = await supabase
     .from('interactions')
     .insert([interaction]);
+  
+  if (error) {
+    console.error('Error saving interaction:', error);
+    throw new Error(`Failed to save interaction: ${error.message}`);
+  }
 }

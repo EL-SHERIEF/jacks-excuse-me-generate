@@ -31,7 +31,7 @@ export function ReactionBar({ excuseId, excuse, onReaction }: ReactionBarProps) 
   };
 
   const handleLike = () => {
-    if (liked) return;
+    if (liked || !excuseId) return;
 
     setLiked(true);
     const likedExcuses = JSON.parse(localStorage.getItem('likedExcuses') || '[]');

@@ -7,28 +7,31 @@ export const runtime = 'edge';
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
 
 const TONE_DESCRIPTIONS = {
-  funny: 'over-the-top hilarious, absurdly creative, and laugh-out-loud worthy',
-  believable: 'realistic, professional, and convincingly plausible',
-  dramatic: 'theatrical, emotionally intense, and cinema-worthy'
+  funny: 'ضحك مصري خفيف, كوميديا سوداء لا تظهر انها كوميديا, ضحك بسيط حقيقي وليس مبالغ فيه',
+  believable: 'واقعي، فني، مهني، ومقنع بشكل كبير',
+  dramatic: 'مرضي يؤثر على عاطفة العميل، ومؤثر بشكل كبير'
 };
 
-async function generateExcuseText(tone: string): Promise<string> {
+// توليد العذر الرئيسي
+async function generateExcuseText(tone: string, excuseType: string): Promise<string> {
   const toneDesc = TONE_DESCRIPTIONS[tone as keyof typeof TONE_DESCRIPTIONS] || 'creative and witty';
-  // Use the Gemini Pro text model
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   try {
-    const prompt = `You are a witty AI humorist specializing in Egyptian workplace culture. Generate a ${toneDesc} freelancer excuse in natural Egyptian Arabic (not formal Arabic - use real Egyptian dialect). The excuse should be 1-2 sentences maximum, sound completely natural and human-like, and include typical Egyptian expressions or cultural references. Make it witty and authentic to how Egyptians actually speak. Only return the excuse text, nothing else.`;
+ const prompt = `علميا يكون فيه طرق اقناع كويسة بدون مقدمات كأني هبعته واتساب ،انت خبير في كتابة أعذار للفريلانسرز باللهجة المصرية اليومية، هدفك توليد عذر واحد من جملة واحدة أو جملتين ومقنع جدًا.
+العذر يكون ${toneDesc}، واقعي، طبيعي، ومهني، ممكن يكون طويل (2-5 جمل أو أكثر) ويشمل تفاصيل يومية دقيقة.
+يراعي نوع العذر: ${excuseType}، سواء كان مشكلة تقنية، ضغط شغل، ظروف شخصية مرتبطة بالعمل، مواعيد، مراجعات، أو أي موقف يومي حقيقي يؤثر على القدرة على تسليم المشروع.
+العذر لازم يكون صادق ومقنع للعميل ويظهر أنك ملتزم بجودة الشغل، ويخليه متفهم للسبب ويحافظ على ثقته فيك.
+استخدم أسلوب سرد طبيعي باللهجة المصرية، استخدم تعابير يومية ومواقف مألوفة للفريلانسرز المصريين.
+ركز على الواقعية: وضّح السبب، الموقف، وكيف أثر على جدولك أو على الشغل، مع الحفاظ على المهنية.
+ارجع النص كامل، جاهز للاستخدام مباشرة، بدون أي إضافات، بدون شرح، بدون قائمة أو تنسيق JSON.`;
 
     const result = await model.generateContent(prompt);
-    if (!result.response) {
-      throw new Error('No response from Gemini API');
-    }
-    const response = result.response;
-    const text = response.text().trim();
-    if (!text) {
-      throw new Error('Empty response from Gemini API');
-    }
+    if (!result.response) throw new Error('No response from Gemini API');
+
+    const text = result.response.text().trim();
+    if (!text) throw new Error('Empty response from Gemini API');
+
     return text;
   } catch (error: any) {
     console.error('Error in generateExcuseText:', error);
@@ -36,43 +39,25 @@ async function generateExcuseText(tone: string): Promise<string> {
   }
 }
 
+// توليد نصائح العذر بدون Ethical أو Fun Tip
 async function generateExcuseTips(excuse: string, tone: string): Promise<string> {
-  // Use the Gemini Pro text model
   const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   try {
-    const prompt = `Given this fictional excuse: "${excuse}" (tone: ${tone})
-
-Create fictional "Excuse Tips" - an educational breakdown that helps people recognize communication patterns. Format it as follows:
-
-**Overview**
-Brief explanation of the communication pattern (2-3 sentences)
-
-**Techniques**
-- List 3-4 communication techniques used in this pattern
-- Each should be educational and analytical
-
-**Indicators**
-- List 3-4 signs that might indicate this communication pattern
-- Focus on analytical observation
-
-**Ethical Note**
-A brief reminder that recognizing these patterns is for understanding communication, not for deception or manipulation. Emphasize honest, direct communication in professional settings.
-
-**Fun Tip**
-A lighthearted observation about communication or workplace culture (1 sentence)
-
-Keep the tone educational and analytical. This is fictional content for training purposes only.`;
+    const prompt = `اعتمادًا على هذا العذر: "${excuse}" (بالنبرة: ${tone})
+    بدون أي مقدمات إبدأ علطول
+اعمل تحليل تعليمي ازاي الفريلانسر يستخدم العذر دا:
+- تحليل:  جمل على الأقل عن سبب العذر وكيف يؤثر على العميل وكيفية جعله متفهمًا(بحد أقصى 3 جمل).
+- طريقة استخدام العذر في السياق: طرق عملية لاستخدام العذر بشكل مهني ودبلوماسي مع العميل(بحد أقصى 4 جمل).
+- إمتى تستخدم العذر دا: علامات توضح متى يكون العذر مناسب للاستخدام(بحد أقصى 10 جمل)
+خلي النصائح موجهة للفريلانسر.`;
 
     const result = await model.generateContent(prompt);
-    if (!result.response) {
-      throw new Error('No response from Gemini API');
-    }
-    const response = result.response;
-    const text = response.text().trim();
-    if (!text) {
-      throw new Error('Empty response from Gemini API');
-    }
+    if (!result.response) throw new Error('No response from Gemini API');
+
+    const text = result.response.text().trim();
+    if (!text) throw new Error('Empty response from Gemini API');
+
     return text;
   } catch (error: any) {
     console.error('Error in generateExcuseTips:', error);
@@ -82,7 +67,7 @@ Keep the tone educational and analytical. This is fictional content for training
 
 export async function POST(request: NextRequest) {
   try {
-    const { tone } = await request.json();
+    const { tone, excuseType } = await request.json();
 
     if (!tone || !['funny', 'believable', 'dramatic'].includes(tone)) {
       return NextResponse.json(
@@ -94,17 +79,21 @@ export async function POST(request: NextRequest) {
     if (!process.env.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY === 'your_gemini_api_key_here') {
       return NextResponse.json(
         {
-          error: 'Google API key not configured. Please add your GOOGLE_API_KEY to the .env file.',
-          excuse: 'يا عم أنا النهاردة تعبان أوي، مش قادر أشتغل دلوقتي',
-          tips: '**Overview**\n\nThis is a demo response. Please configure your Claude API key to generate real excuses.\n\n**Techniques**\n- Genuine expression of physical state\n- Direct communication\n- Setting clear boundaries\n\n**Indicators**\n- Straightforward language\n- No elaborate justifications\n- Focus on current condition\n\n**Ethical Note**\n\nAlways be honest in professional communication. If you need time off or cannot complete work, communicate directly with your clients or team.\n\n**Fun Tip**\n\nIn Egyptian culture, being direct about needing rest is often more respected than elaborate excuses!'
+          error: 'Google API key not configured.',
+          excuse: 'يا عم أنا النهاردة تعبان أوي ومحتاج أأجل شوية شغل',
+          tips: '**Overview**: عذر تجريبي. \n**Techniques**: استخدم عذر بسيط وصادق. \n**Indicators**: وقت التعب أو ضغط الشغل.'
         },
         { status: 200 }
       );
     }
 
-    const excuseText = await generateExcuseText(tone);
+    // توليد العذر
+    const excuseText = await generateExcuseText(tone, excuseType);
+
+    // توليد النصائح
     const excuseTips = await generateExcuseTips(excuseText, tone);
 
+    // حفظ العذر في Supabase
     const savedExcuse = await saveExcuse({
       tone: tone as 'funny' | 'believable' | 'dramatic',
       excuse_text: excuseText,
@@ -120,10 +109,9 @@ export async function POST(request: NextRequest) {
 
   } catch (error: any) {
     console.error('Error generating excuse:', error);
-    const errorMessage = error.message || 'Unknown error occurred';
     return NextResponse.json(
       { 
-        error: `Failed to generate excuse: ${errorMessage}. Please try again.`,
+        error: `Failed to generate excuse: ${error.message}`,
         details: error.toString()
       },
       { status: 500 }
