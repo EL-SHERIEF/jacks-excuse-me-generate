@@ -49,7 +49,7 @@ export function ShareDialog({ isOpen, onClose, excuse }: ShareDialogProps) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md bg-gray-900/95 backdrop-blur-lg border-gray-700">
         <DialogHeader>
-          <DialogTitle className="text-xl text-gray-200">Share Excuse</DialogTitle>
+          <DialogTitle className="text-xl text-gray-200">شارك العذر </DialogTitle>
           <DialogDescription className="text-gray-400">
             اختار عايز تشارك العذر دا فين:
           </DialogDescription>
