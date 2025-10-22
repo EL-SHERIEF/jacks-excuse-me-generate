@@ -1,0 +1,1 @@
+ALTER TABLE excuses DROP COLUMN excuse_tips;

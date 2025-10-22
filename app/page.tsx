@@ -13,7 +13,6 @@ import { incrementExcuseCount, saveInteraction } from '@/lib/supabase';
 
 interface GeneratedExcuse {
   excuse: string;
-  tips: string;
   excuseId: string;
 }
 
@@ -53,10 +52,9 @@ export default function Home() {
 
       if (data.error) {
         toast.error(data.error);
-        if (data.excuse && data.tips) {
+        if (data.excuse) {
           setGeneratedExcuse({
             excuse: data.excuse,
-            tips: data.tips,
             excuseId: 'demo',
           });
         }
@@ -65,7 +63,6 @@ export default function Home() {
 
       setGeneratedExcuse({
         excuse: data.excuse,
-        tips: data.tips,
         excuseId: data.excuseId,
       });
 
@@ -138,7 +135,6 @@ export default function Home() {
         {generatedExcuse && (
           <ExcuseCard
             excuse={generatedExcuse.excuse}
-            tips={generatedExcuse.tips}
             excuseId={generatedExcuse.excuseId}
             onReaction={handleReaction}
           />

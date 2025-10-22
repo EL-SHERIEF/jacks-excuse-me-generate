@@ -7,7 +7,7 @@ export const runtime = 'edge';
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
 
 const TONE_DESCRIPTIONS = {
-  funny: 'ضحك مصري خفيف, كوميديا سوداء لا تظهر انها كوميديا, ضحك بسيط حقيقي وليس مبالغ فيه',
+  funny: 'ضحك مصري خفيف, كوميديا سوداء حقيقية لا تظهر انها كوميديا لاكنها بتضحك, ضحك بسيط',
   believable: 'واقعي، فني، مهني، ومقنع بشكل كبير',
   dramatic: 'مرضي يؤثر على عاطفة العميل، ومؤثر بشكل كبير'
 };
@@ -50,12 +50,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!process.env.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY === 'your_gemini_api_key_here') {
+      if (!process.env.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY === 'your_gemini_api_key_here') {
       return NextResponse.json(
         {
           error: 'Google API key not configured.',
-          excuse: 'يا عم أنا النهاردة تعبان أوي ومحتاج أأجل شوية شغل',
-          tips: '**Overview**: عذر تجريبي. \n**Techniques**: استخدم عذر بسيط وصادق. \n**Indicators**: وقت التعب أو ضغط الشغل.'
+          excuse: 'يا عم أنا النهاردة تعبان أوي ومحتاج أأجل شوية شغل'
         },
         { status: 200 }
       );
@@ -63,7 +62,6 @@ export async function POST(request: NextRequest) {
 
     // توليد العذر
     const excuseText = await generateExcuseText(tone, excuseType);
-
 
     // حفظ العذر في Supabase
     const savedExcuse = await saveExcuse({
@@ -75,9 +73,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       excuse: excuseText,
       excuseId: savedExcuse?.id
-    });
-
-  } catch (error: any) {
+    });  } catch (error: any) {
     console.error('Error generating excuse:', error);
     return NextResponse.json(
       { 
