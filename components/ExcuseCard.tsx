@@ -7,7 +7,7 @@ import { ReactionBar } from './ReactionBar';
 interface ExcuseCardProps {
   excuse: string;
   excuseId: string;
-  onReaction: (type: 'like' | 'share' | 'copy') => void;
+  onReaction: (type: 'like' | 'share' | 'copy' | 'unlike') => void;
 }
 
 export function ExcuseCard({ excuse, excuseId, onReaction }: ExcuseCardProps) {

@@ -100,18 +100,22 @@ export default function Home() {
     }
   };
 
-  const handleReaction = async (type: 'like' | 'share' | 'copy') => {
+  const handleReaction = async (type: 'like' | 'share' | 'copy' | 'unlike') => {
     if (!generatedExcuse || generatedExcuse.excuseId === 'demo') return;
 
     try {
-      await incrementExcuseCount(
-        generatedExcuse.excuseId,
-        type === 'like' ? 'likes_count' : type === 'share' ? 'shares_count' : 'copies_count'
-      );
+      if (type === 'unlike') {
+        await incrementExcuseCount(generatedExcuse.excuseId, 'likes_count', false);
+      } else {
+        await incrementExcuseCount(
+          generatedExcuse.excuseId,
+          type === 'like' ? 'likes_count' : type === 'share' ? 'shares_count' : 'copies_count'
+        );
+      }
 
       await saveInteraction({
         excuse_id: generatedExcuse.excuseId,
-        interaction_type: type,
+        interaction_type: type === 'unlike' ? 'like' : type,
         user_id: undefined,
       });
     } catch (error) {

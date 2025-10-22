@@ -24,6 +24,19 @@ export interface Interaction {
   created_at: string;
 }
 
+export async function getTotalExcuseCount(): Promise<number> {
+  const { data, error } = await supabase
+    .from('excuses')
+    .select('id', { count: 'exact' });
+
+  if (error) {
+    console.error('Error getting total excuse count:', error);
+    return 0;
+  }
+
+  return data.length || 0;
+}
+
 export async function getTopExcuses(limit: number = 10): Promise<Excuse[]> {
   const { data, error } = await supabase
     .from('excuses')
@@ -55,7 +68,11 @@ export async function saveExcuse(excuse: Omit<Excuse, 'id' | 'created_at' | 'lik
   return data;
 }
 
-export async function incrementExcuseCount(excuseId: string, countType: 'likes_count' | 'shares_count' | 'copies_count'): Promise<void> {
+export async function incrementExcuseCount(
+  excuseId: string, 
+  countType: 'likes_count' | 'shares_count' | 'copies_count',
+  increment: boolean = true
+): Promise<void> {
   const { data: excuse } = await supabase
     .from('excuses')
     .select(countType)
@@ -66,9 +83,10 @@ export async function incrementExcuseCount(excuseId: string, countType: 'likes_c
     const excuseData = excuse as Record<string, number>;
     const currentCount = excuseData[countType];
     if (typeof currentCount === 'number') {
+      const newCount = increment ? currentCount + 1 : Math.max(0, currentCount - 1);
       await supabase
         .from('excuses')
-        .update({ [countType]: currentCount + 1 })
+        .update({ [countType]: newCount })
         .eq('id', excuseId);
     }
   }
