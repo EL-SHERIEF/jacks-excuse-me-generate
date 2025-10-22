@@ -42,7 +42,7 @@ export function Leaderboard() {
           <Trophy className="w-8 h-8 text-yellow-500" />
           أقوى الأعذار
         </h2>
-        <div className="text-center text-gray-400">Loading...</div>
+        <div className="text-center text-gray-400">جاري التحميل...</div>
       </div>
     );
   }
@@ -55,7 +55,7 @@ export function Leaderboard() {
           أقوى الأعذار
         </h2>
         <div className="text-center text-gray-400">
-          <p>No excuses yet. Be the first to generate one!</p>
+          <p>مفيش أعذار لحد دلوقتي. خليك أول من يعتذر!</p>
         </div>
       </div>
     );

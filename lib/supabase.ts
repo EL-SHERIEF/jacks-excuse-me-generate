@@ -37,7 +37,7 @@ export async function getTotalExcuseCount(): Promise<number> {
   return data.length || 0;
 }
 
-export async function getTopExcuses(limit: number = 10): Promise<Excuse[]> {
+export async function getTopExcuses(limit: number = 100): Promise<Excuse[]> {
   const { data, error } = await supabase
     .from('excuses')
     .select('*')
