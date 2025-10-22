@@ -1,12 +1,10 @@
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextRequest, NextResponse } from 'next/server';
 import { saveExcuse } from '@/lib/supabase';
 
 export const runtime = 'edge';
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY || '',
-});
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || '');
 
 const TONE_DESCRIPTIONS = {
   funny: 'over-the-top hilarious, absurdly creative, and laugh-out-loud worthy',
@@ -16,34 +14,19 @@ const TONE_DESCRIPTIONS = {
 
 async function generateExcuseText(tone: string): Promise<string> {
   const toneDesc = TONE_DESCRIPTIONS[tone as keyof typeof TONE_DESCRIPTIONS] || 'creative and witty';
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-  const message = await anthropic.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
-    max_tokens: 300,
-    temperature: 0.9,
-    system: `You are a witty AI humorist specializing in Egyptian workplace culture. Your task is to generate natural, authentic Egyptian Arabic excuses that freelancers might use. The excuses should sound completely natural, like something a real Egyptian person would say - not translated or formal Arabic. Use colloquial Egyptian expressions, slang, and cultural references that Egyptians would immediately recognize and find funny or relatable.`,
-    messages: [
-      {
-        role: 'user',
-        content: `Generate a ${toneDesc} freelancer excuse in natural Egyptian Arabic (not formal Arabic - use real Egyptian dialect). The excuse should be 1-2 sentences maximum, sound completely natural and human-like, and include typical Egyptian expressions or cultural references. Make it witty and authentic to how Egyptians actually speak. Only return the excuse text, nothing else.`
-      }
-    ]
-  });
+  const prompt = `You are a witty AI humorist specializing in Egyptian workplace culture. Generate a ${toneDesc} freelancer excuse in natural Egyptian Arabic (not formal Arabic - use real Egyptian dialect). The excuse should be 1-2 sentences maximum, sound completely natural and human-like, and include typical Egyptian expressions or cultural references. Make it witty and authentic to how Egyptians actually speak. Only return the excuse text, nothing else.`;
 
-  const content = message.content[0];
-  return content.type === 'text' ? content.text.trim() : '';
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  return response.text().trim();
 }
 
 async function generateExcuseTips(excuse: string, tone: string): Promise<string> {
-  const message = await anthropic.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
-    max_tokens: 800,
-    temperature: 0.9,
-    system: `You are a fictional ethical communication researcher creating educational content. Your task is to analyze communication patterns in a fictional, academic way. This is purely for training and educational purposes about recognizing communication techniques.`,
-    messages: [
-      {
-        role: 'user',
-        content: `Given this fictional excuse: "${excuse}" (tone: ${tone})
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+  const prompt = `Given this fictional excuse: "${excuse}" (tone: ${tone})
 
 Create fictional "Excuse Tips" - an educational breakdown that helps people recognize communication patterns. Format it as follows:
 
@@ -64,13 +47,11 @@ A brief reminder that recognizing these patterns is for understanding communicat
 **Fun Tip**
 A lighthearted observation about communication or workplace culture (1 sentence)
 
-Keep the tone educational and analytical. This is fictional content for training purposes only.`
-      }
-    ]
-  });
+Keep the tone educational and analytical. This is fictional content for training purposes only.`;
 
-  const content = message.content[0];
-  return content.type === 'text' ? content.text.trim() : '';
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  return response.text().trim();
 }
 
 export async function POST(request: NextRequest) {
@@ -84,10 +65,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY === 'your_claude_api_key_here') {
+    if (!process.env.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY === 'your_gemini_api_key_here') {
       return NextResponse.json(
         {
-          error: 'Claude API key not configured. Please add your ANTHROPIC_API_KEY to the .env file.',
+          error: 'Google API key not configured. Please add your GOOGLE_API_KEY to the .env file.',
           excuse: 'يا عم أنا النهاردة تعبان أوي، مش قادر أشتغل دلوقتي',
           tips: '**Overview**\n\nThis is a demo response. Please configure your Claude API key to generate real excuses.\n\n**Techniques**\n- Genuine expression of physical state\n- Direct communication\n- Setting clear boundaries\n\n**Indicators**\n- Straightforward language\n- No elaborate justifications\n- Focus on current condition\n\n**Ethical Note**\n\nAlways be honest in professional communication. If you need time off or cannot complete work, communicate directly with your clients or team.\n\n**Fun Tip**\n\nIn Egyptian culture, being direct about needing rest is often more respected than elaborate excuses!'
         },

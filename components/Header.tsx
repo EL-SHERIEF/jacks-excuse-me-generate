@@ -49,7 +49,7 @@ export function Header() {
         transition={{ duration: 0.6, delay: 0.6 }}
         className="text-sm text-gray-500 mt-4 max-w-2xl mx-auto"
       >
-        Generate hilarious Egyptian Arabic excuses powered by Claude AI. For entertainment and educational purposes only.
+        Generate hilarious Egyptian Arabic excuses powered by Google Gemini. For entertainment and educational purposes only.
       </motion.p>
     </motion.header>
   );

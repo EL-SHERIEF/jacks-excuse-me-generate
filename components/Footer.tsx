@@ -16,7 +16,7 @@ export function Footer() {
           <div className="flex items-center justify-center gap-2 text-gray-400">
             <Code className="w-4 h-4" />
             <span className="text-sm">
-              Built with Next.js, Claude AI, Supabase & Framer Motion
+              Built with Next.js, Google Gemini, Supabase & Framer Motion
             </span>
           </div>
 
@@ -41,7 +41,7 @@ export function Footer() {
           </div>
 
           <div className="text-xs text-gray-700">
-            Powered by Claude 3.5 Sonnet © {new Date().getFullYear()}
+            Powered by Google Gemini © {new Date().getFullYear()}
           </div>
         </div>
       </div>
