@@ -90,7 +90,7 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
           }`}
         >
           <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} />
-          <span>{liked ? 'Liked' : 'Like'}</span>
+          <span>{liked ? 'تم الإعجاب' : 'أعجبني'}</span>
         </motion.button>
 
         <motion.button
