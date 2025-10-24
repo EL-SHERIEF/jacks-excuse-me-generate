@@ -8,6 +8,7 @@ import { ToneSelector } from '@/components/ToneSelector';
 import { GenerateButton } from '@/components/GenerateButton';
 import { ExcuseCard } from '@/components/ExcuseCard';
 import { Leaderboard } from '@/components/Leaderboard';
+import { HappyUserSection } from '@/components/HappyUserSection';
 import { Footer } from '@/components/Footer';
 import { incrementExcuseCount, saveInteraction } from '@/lib/supabase';
 
@@ -147,7 +148,9 @@ export default function Home() {
         <div className="my-16">
           <Leaderboard />
         </div>
-
+          <div className="my-16">
+           <HappyUserSection />
+          </div>
         <Footer />
       </div>
     </main>

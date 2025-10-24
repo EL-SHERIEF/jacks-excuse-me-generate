@@ -15,21 +15,18 @@ const tones = [
     title: 'مضحك',
     description: 'أعذار مضحكة وكوميدية جداً',
     icon: Laugh,
-    gradient: 'bg-[#f6df5510]',
   },
   {
     id: 'believable',
     title: 'واقعي',
     description: 'أعذار واقعية ومحترمة',
     icon: Briefcase,
-    gradient: 'bg-[#f6df5510]',
   },
   {
     id: 'dramatic',
     title: 'مؤثر',
     description: 'أعذار درامية ومؤثرة',
     icon: Drama,
-    gradient: 'bg-[#f6df5510]',
   },
 ];
 
@@ -68,8 +65,7 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
               <div className="flex flex-col items-center text-center space-y-4">
                 <div
                   className={cn(
-                    'p-3 rounded-full bg-gradient-to-br',
-                    tone.gradient
+                    'p-3 rounded-full bg-[#f6df5510]'
                   )}
                 >
                   <Icon className="w-6 h-6 text-[#f6df55]" />
