@@ -80,19 +80,19 @@ export default function Home() {
 
       if (newCount === 5) {
         setTimeout(() => {
-          toast.info('يا نهار! 5 أعذار؟ شكلك محتاج بريك حقيقي!', {
+          toast.info('5 أعذار؟ انتا بجد؟ مقصدش حاجة بسسسسسس', {
             duration: 5000,
           });
         }, 1000);
       } else if (newCount === 10) {
         setTimeout(() => {
-          toast.info('10 أعذار؟! يلا نرجع نشتغل... ولا نولد عذر تاني؟!', {
+          toast.info('مش حاسس ان كفاية أعذار بقا ونشوف شغلنا؟', {
             duration: 5000,
           });
         }, 1000);
       }
 
-      toast.success('تم توليد العذر!');
+      toast.success('عذرك جاهز يباشا!');
     } catch (error) {
       console.error('Error generating excuse:', error);
       toast.error('حدث خطأ في توليد العذر. من فضلك حاول مرة تانية.');

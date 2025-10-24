@@ -44,7 +44,7 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
       localStorage.setItem('likedExcuses', JSON.stringify(updatedLikedExcuses));
       setLiked(false);
       onReaction('unlike');
-      toast.success('Excuse unliked');
+      toast.success('تم الغاء تسجيل الإعجاب!');
     } else {
       // Like the excuse
       likedExcuses.push(excuseId);

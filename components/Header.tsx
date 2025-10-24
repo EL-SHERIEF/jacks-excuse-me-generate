@@ -28,9 +28,9 @@ export function Header() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
-        className="text-md text-[#f6df5590] mt-4 max-w-2xl mx-auto"
+        className="text-md text-[#f6df55] mt-4 max-w-2xl mx-auto"
       >
-        مدعوم بتقنية جوجل جيميناي للذكاء الاصطناعي - للترفيه والتعليم فقط
+        مدعوم بتقنية جوجل جيميناي للذكاء الاصطناعي  - للترفيه والتعليم فقط
       </motion.p>
     </motion.header>
   );
