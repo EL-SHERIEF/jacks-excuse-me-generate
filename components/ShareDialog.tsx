@@ -47,7 +47,7 @@ export function ShareDialog({ isOpen, onClose, excuse }: ShareDialogProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-gray-900/95 backdrop-blur-lg border-gray-700">
+      <DialogContent className="sm:max-w-md bg-[#ffffff10] backdrop-blur-lg border-[#f6df553d]">
         <DialogHeader>
           <DialogTitle className="text-xl text-gray-200">شارك العذر </DialogTitle>
           <DialogDescription className="text-gray-400">

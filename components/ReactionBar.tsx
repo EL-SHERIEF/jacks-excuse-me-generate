@@ -83,13 +83,13 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={handleLike}
-          className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
             liked
-              ? 'bg-pink-500/30 text-pink-400 border-2 border-pink-500 hover:bg-pink-500/20'
-              : 'bg-gray-800 text-gray-300 border-2 border-gray-700 hover:border-pink-500 hover:text-pink-400'
+              ? 'bg-[#f6df55]/30 text-[#f6df55] border-2 border-[#F6DF55] hover:bg-[#f6df55]/20'
+              : 'text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590] hover:border-[#f6df55] hover:text-[#f6df55] transition-all'
           }`}
         >
-          <Heart className={`w-5 h-5 ${liked ? 'fill-current' : ''}`} />
+          <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} />
           <span>{liked ? 'Liked' : 'Like'}</span>
         </motion.button>
 
@@ -97,16 +97,16 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={handleCopy}
-          className="flex items-center gap-2 px-6 py-3 rounded-full font-medium bg-gray-800 text-gray-300 border-2 border-gray-700 hover:border-blue-500 hover:text-blue-400 transition-all"
+          className="text-sm flex items-center gap-2 px-4 py-2 rounded-full font-medium text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590] hover:border-[#f6df55] hover:text-[#f6df55] transition-all"
         >
           {copied ? (
             <div className="flex items-center gap-2">
-              <Check className="w-5 h-5" />
+              <Check className="w-4 h-4" />
               <span>تم النسخ!</span>
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <Copy className="w-5 h-5" />
+              <Copy className="w-4 h-4" />
               <span>نسخ</span>
             </div>
           )}
@@ -116,9 +116,9 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={handleShare}
-          className="flex items-center gap-2 px-6 py-3 rounded-full font-medium bg-gray-800 text-gray-300 border-2 border-gray-700 hover:border-purple-500 hover:text-purple-400 transition-all"
+          className="text-sm flex items-center gap-2 px-6 py-3 rounded-full font-medium text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590] hover:border-[#f6df55] hover:text-[#f6df55] transition-all"
         >
-          <Share2 className="w-5 h-5" />
+          <Share2 className="w-4 h-4" />
           <span>شارك</span>
         </motion.button>
       </div>

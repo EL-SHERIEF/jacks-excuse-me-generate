@@ -12,27 +12,24 @@ interface ToneSelectorProps {
 const tones = [
   {
     id: 'funny',
-    title: 'Funny',
-    arabicTitle: 'مضحك',
-      description: 'أعذار مضحكة وكوميدية جداً',
+    title: 'مضحك',
+    description: 'أعذار مضحكة وكوميدية جداً',
     icon: Laugh,
-    gradient: 'from-pink-500 to-rose-500',
+    gradient: 'bg-[#f6df5510]',
   },
   {
     id: 'believable',
-    title: 'Believable',
-    arabicTitle: 'مقنع',
+    title: 'واقعي',
     description: 'أعذار واقعية ومحترمة',
     icon: Briefcase,
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'bg-[#f6df5510]',
   },
   {
     id: 'dramatic',
-    title: 'Dramatic',
-    arabicTitle: 'درامي',
+    title: 'مؤثر',
     description: 'أعذار درامية ومؤثرة',
     icon: Drama,
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: 'bg-[#f6df5510]',
   },
 ];
 
@@ -42,7 +39,7 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
       <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-2xl md:text-3xl font-bold text-center mb-8 text-white"
+        className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#f6df55]"
       >
         اختار نوع العذر
       </motion.h2>
@@ -62,32 +59,27 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
               whileTap={{ scale: 0.95 }}
               onClick={() => onSelectTone(tone.id as 'funny' | 'believable' | 'dramatic')}
               className={cn(
-                'relative p-6 rounded-xl bg-gray-900/50 backdrop-blur-sm border-2 transition-all duration-300',
+                'relative p-6 rounded-xl bg-[#ffffff05] backdrop-blur-sm border-2 transition-all duration-300',
                 isSelected
-                  ? 'border-pink-500 neon-glow'
-                  : 'border-gray-700 hover:border-gray-600'
+                  ? 'border-[#F6DF55] neon-glow'
+                  : 'border-[#f6df553d] hover:border-[#f6df55]'
               )}
             >
               <div className="flex flex-col items-center text-center space-y-4">
                 <div
                   className={cn(
-                    'p-4 rounded-full bg-gradient-to-br',
+                    'p-3 rounded-full bg-gradient-to-br',
                     tone.gradient
                   )}
                 >
-                  <Icon className="w-8 h-8 text-white" />
+                  <Icon className="w-6 h-6 text-[#f6df55]" />
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">
+                  <h3 className="text-lg font-bold text-[#f6df55] mb-1">
                     {tone.title}
                   </h3>
-                  <p
-                    className="text-lg text-gray-400 mb-2"
-                  >
-                    {tone.arabicTitle}
-                  </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-[#f6df5590]">
                     {tone.description}
                   </p>
                 </div>
@@ -96,10 +88,10 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute top-3 right-3 w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center"
+                    className="absolute top-3 right-3 w-6 h-6 rounded-full flex items-center justify-center"
                   >
                     <svg
-                      className="w-4 h-4 text-white"
+                      className="w-4 h-4 text-[#f6df55]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
