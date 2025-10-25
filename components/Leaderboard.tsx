@@ -21,7 +21,7 @@ export function Leaderboard() {
 
   const fetchExcuses = async () => {
     const [topExcuses, count] = await Promise.all([
-      getTopExcuses(10),
+      getTopExcuses(100),
       getTotalExcuseCount()
     ]);
     setExcuses(topExcuses);
@@ -37,21 +37,21 @@ export function Leaderboard() {
 
   if (loading) {
     return (
-      <div className="w-full max-w-5xl mx-auto px-4 py-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-white flex items-center justify-center gap-2">
-          <Trophy className="w-8 h-8 text-yellow-500" />
+      <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#f6df55] flex items-center justify-center gap-2">
+          <Trophy className="w-8 h-8 text-[#f6df55]" />
           أقوى الأعذار
         </h2>
-        <div className="text-center text-gray-400">جاري التحميل...</div>
+        <div className="text-center text-[#f6df5580]">جاري التحميل...</div>
       </div>
     );
   }
 
   if (excuses.length === 0) {
     return (
-      <div className="w-full max-w-5xl mx-auto px-4 py-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-white flex items-center justify-center gap-2">
-          <Trophy className="w-8 h-8 text-yellow-500" />
+      <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#f6df55] flex items-center justify-center gap-2">
+          <Trophy className="w-8 h-8 text-[#f6df55]" />
           أقوى الأعذار
         </h2>
         <div className="text-center text-gray-400">
@@ -99,7 +99,7 @@ export function Leaderboard() {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-8">
+    <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -117,7 +117,7 @@ export function Leaderboard() {
         </p>
       </motion.div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-3">
         {excuses.map((excuse, index) => {
           const isExpanded = expandedExcuse === excuse.id;
 
@@ -155,7 +155,7 @@ export function Leaderboard() {
                     >
                       <div className="flex items-center gap-2">
                         <motion.span
-                          className="text-2xl font-bold text-[#f6df5590]"
+                          className="text-xl font-bold text-[#f6df5590]"
                           layout="position"
                         >
                           #{index + 1}
@@ -163,7 +163,7 @@ export function Leaderboard() {
                         <motion.div layout="position">
                           <Badge
                             variant="outline"
-                            className="flex items-center gap-1 text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590]"
+                            className="text-xs flex items-center gap-1 text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590]"
                           >
                             {getToneBadgeIcon(excuse.tone)}
                             {excuse.tone}
@@ -201,11 +201,7 @@ export function Leaderboard() {
                         }}
                       >
                         <motion.p
-                          className="text-base text-gray-300 leading-relaxed mb-2"
-                          style={{
-                            direction: 'rtl',
-                            fontFamily: 'Arial, sans-serif',
-                          }}
+                          className="text-sm text-gray-300 leading-relaxed mb-2"
                           layout="position"
                         >
                           {excuse.excuse_text}

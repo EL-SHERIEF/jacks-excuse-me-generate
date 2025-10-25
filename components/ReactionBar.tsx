@@ -116,7 +116,7 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={handleShare}
-          className="text-sm flex items-center gap-2 px-6 py-3 rounded-full font-medium text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590] hover:border-[#f6df55] hover:text-[#f6df55] transition-all"
+          className="text-sm flex items-center gap-2 px-4 py-2 rounded-full font-medium text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590] hover:border-[#f6df55] hover:text-[#f6df55] transition-all"
         >
           <Share2 className="w-4 h-4" />
           <span>شارك</span>

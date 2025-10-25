@@ -32,7 +32,7 @@ const tones = [
 
 export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) {
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 py-8">
+    <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2">
       <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -84,7 +84,7 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute top-3 right-3 w-6 h-6 rounded-full flex items-center justify-center"
+                    className="absolute top-0 right-3 w-6 h-6 rounded-full flex items-center justify-center"
                   >
                     <svg
                       className="w-4 h-4 text-[#f6df55]"
