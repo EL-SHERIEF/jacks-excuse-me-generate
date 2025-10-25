@@ -147,6 +147,7 @@ export function Header() {
       <motion.div {...motionScale} className="flex items-center justify-center gap-3 mb-5">
         <h1 className={`text-3xl md:text-5xl font-bold ${styles.text}`}>
           مولد أعذار الفريلانسرز
+
         </h1>
       </motion.div>
 
@@ -157,7 +158,7 @@ export function Header() {
         transition={{ duration: 0.6, delay: 0.6 }}
         className={`text-sm md:text-md ${styles.text} mt-4 max-w-2xl mx-auto`}
       >
-        أعذر نفسك مع أول تقنية ذكاء اصطناعي مستخدمة في تكاسل الفريلانسرز
+        اعذر نفسك مع أول تقنية ذكاء اصطناعي مصممة خصيصاً لخدمة كسل الفريلانسرز
       </motion.p>
 
       {/* الشارات */}
