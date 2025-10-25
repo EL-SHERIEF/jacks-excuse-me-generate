@@ -21,7 +21,7 @@ const headingFont = localFont({
 });
 
 // ---------------------- SITE CONSTANTS ----------------------
-const SITE_URL = "https://o3zorni.vercel.app/";
+const SITE_URL = "https://o3zorni.vercel.app";
 const SITE_NAME = "أعذرني";
 const SITETAG = "أعذرني - أول تقنية ذكاء اصطناعي لخدمة تكاسل وأعذار الفريلانسرز";
 const OG_IMAGE = `${SITE_URL}/og.webp`;
