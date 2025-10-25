@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Heart, Code, Shield } from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   return (
@@ -13,6 +14,7 @@ export function Footer() {
     >
       <div className="border-t border-[#f6df553d] pt-8">
         <div className="text-center space-y-4 flex flex-col items-center justify-center">
+     <Link href="https://elsherief.web.app" target="_blank" rel="noopener noreferrer" className="mb-4">
              <svg width="40" height="40" viewBox="0 0 881 881" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_2191_21)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M440.198 8.79987C635.385 8.7999 732.978 8.79991 796.006 66.3976C800.878 70.8495 805.546 75.5184 809.998 80.39C867.596 143.418 867.596 241.012 867.596 436.2C867.596 631.388 867.596 728.982 809.998 792.01C805.546 796.881 800.878 801.55 796.006 806.002C732.978 863.6 635.385 863.6 440.198 863.6C245.011 863.6 147.418 863.6 84.3899 806.002C79.5183 801.55 74.8495 796.881 70.3976 792.01C12.7999 728.982 12.7999 631.388 12.7998 436.2C12.7998 241.012 12.7998 143.418 70.3976 80.3899C74.8495 75.5183 79.5183 70.8495 84.3899 66.3976C147.418 8.79982 245.011 8.79984 440.198 8.79987Z" fill="url(#paint0_linear_2191_21)"/>
@@ -51,7 +53,7 @@ export function Footer() {
 <stop offset="1" stop-color="#3906C9"/>
 </linearGradient>
 </defs>
-</svg>
+</svg></Link>
           <div className="flex items-center justify-center gap-2 text-[#f6df55]">
             <Code className="w-4 h-4" />
             <span className="text-sm">
