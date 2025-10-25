@@ -109,7 +109,7 @@ export function Leaderboard() {
           <Trophy className="w-8 h-8 text-[#f6df55]" />
           أقوى الأعذار
         </h2>
-        <p className="text-[#f6df5590]">
+        <p className="text-[#f6df55]">
           عدد الأعذار الي إتعملت على الأبليكيشن:{' '}
           <span className="font-bold text-[#f6df55] bg-[#f6df5510] px-4 py-1 rounded-xl">
             {totalCount}
@@ -117,7 +117,7 @@ export function Leaderboard() {
         </p>
       </motion.div>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3 ">
         {excuses.map((excuse, index) => {
           const isExpanded = expandedExcuse === excuse.id;
 

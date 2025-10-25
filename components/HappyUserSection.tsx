@@ -95,7 +95,7 @@ export function HappyUserSection() {
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col items-center bg-[#ffffff05] border-2 border-[#f6df553d] hover:border-[#f6df55] rounded-2xl p-6 backdrop-blur-sm transition-all"
         >
-          <span className="text-[#f6df55] text-lg font-semibold mb-4">شارك الموقع مع أصدقائك</span>
+          <span className="text-[#f6df55] text-lg font-semibold mb-4">تابعنا</span>
           <div className="flex flex-wrap justify-center gap-3">
             {socials.map((s) => (
               <motion.button

@@ -78,7 +78,7 @@ export function ReactionBar({ excuseId, excuse, onReaction, isExpanded }: Reacti
 
   return (
     <div>
-      <div className="flex flex-wrap gap-4 justify-center">
+      <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

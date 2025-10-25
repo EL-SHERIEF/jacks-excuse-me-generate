@@ -13,10 +13,10 @@ interface ExcuseCardProps {
 export function ExcuseCard({ excuse, excuseId, onReaction }: ExcuseCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      initial={{ opacity: 0, scale: 0.3, y: -40 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-4xl mx-auto px-4 py-8"
+      className="w-full max-w-4xl mx-auto px-4 py-8 relative z-10"
     >
       <div className="bg-[#ffffff05] backdrop-blur-sm rounded-2xl p-8 neon-border">
         <div className="mb-6">
@@ -26,7 +26,6 @@ export function ExcuseCard({ excuse, excuseId, onReaction }: ExcuseCardProps) {
           <p
             className="text-lg md:text-2xl font-bold text-white leading-relaxed"
             style={{
-              direction: 'rtl',
               lineHeight: '1.5'
             }}
           >

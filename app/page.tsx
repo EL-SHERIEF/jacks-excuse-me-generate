@@ -7,6 +7,7 @@ import { Header } from '@/components/Header';
 import { ToneSelector } from '@/components/ToneSelector';
 import { GenerateButton } from '@/components/GenerateButton';
 import { ExcuseCard } from '@/components/ExcuseCard';
+import { Duck } from '@/components/duck';
 import { Leaderboard } from '@/components/Leaderboard';
 import { HappyUserSection } from '@/components/HappyUserSection';
 import { Footer } from '@/components/Footer';
@@ -144,11 +145,10 @@ export default function Home() {
             onReaction={handleReaction}
           />
         )}
-
-        <div className="my-16">
+        <div className="my-12">
           <Leaderboard />
         </div>
-          <div className="my-16">
+          <div className="my-12">
            <HappyUserSection />
           </div>
         <Footer />
