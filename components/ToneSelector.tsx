@@ -13,7 +13,7 @@ const tones = [
   {
     id: 'funny',
     title: 'مضحك',
-    description: 'أعذار مضحكة وكوميدية جداً',
+    description: 'أعذار مضحكة وعبثية جداً',
     icon: Laugh,
   },
   {

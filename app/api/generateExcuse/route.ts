@@ -41,7 +41,6 @@ async function generateExcuseText(tone: string, excuseType: string): Promise<str
 
     const result = await model.generateContent(prompt);
     if (!result.response) throw new Error('No response from Gemini API');
-
     const text = result.response.text().trim();
     if (!text) throw new Error('Empty response from Gemini API');
 
