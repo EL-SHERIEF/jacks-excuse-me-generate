@@ -314,7 +314,7 @@ export function Leaderboard() {
       )}
 
       <div className="text-center mt-6 text-sm text-[#f6df55]">
-       لا عادي انتا مش في الموود بس
+       لا عادي يمعلم انا عاذرك انتا مش في الموود بس
       </div>
     </div>
   );

@@ -217,6 +217,18 @@ export default function RootLayout({
         >
           {JSON.stringify(jsonLd)}
         </Script>
+          <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-K6NKZF5D6H"
+    strategy="afterInteractive"
+  />
+  <Script id="gtag-init" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-K6NKZF5D6H');
+    `}
+  </Script>
       </head>
 
       <body className={`${almarai.className} antialiased`}>
