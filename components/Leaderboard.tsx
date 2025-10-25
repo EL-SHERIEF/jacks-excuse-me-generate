@@ -164,8 +164,7 @@ export function Leaderboard() {
                           #{index + 1}
                         </motion.span>
                         <motion.div layout="position">
-                          <Badge
-                            variant="outline"
+                          <Badge variant="outline"
                             className="text-xs flex items-center gap-1 text-[#f6df5590] bg-[#f6df5510] border-2 border-[#f6df5590]"
                           >
                             {getToneBadgeIcon(excuse.tone)}
