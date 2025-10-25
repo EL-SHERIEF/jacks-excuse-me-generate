@@ -36,7 +36,7 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
       <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#f6df55]"
+        className="text-xl md:text-2xl font-bold text-center mb-8 text-[#f6df55]"
       >
         اختار نوع العذر
       </motion.h2>
@@ -72,10 +72,10 @@ export function ToneSelector({ selectedTone, onSelectTone }: ToneSelectorProps) 
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold text-[#f6df55] mb-1">
+                  <h3 className="text-md font-bold text-[#f6df55] mb-1">
                     {tone.title}
                   </h3>
-                  <p className="text-sm text-[#f6df5590]">
+                  <p className="text-xs text-[#f6df5590]">
                     {tone.description}
                   </p>
                 </div>

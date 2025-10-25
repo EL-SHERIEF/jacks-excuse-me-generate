@@ -12,7 +12,7 @@ interface GenerateButtonProps {
 
 export function GenerateButton({ onClick, disabled, loading }: GenerateButtonProps) {
   return (
-    <div className="flex justify-center py-8">
+    <div className="flex justify-center py-1">
       <motion.button
         onClick={onClick}
         disabled={disabled}
@@ -22,7 +22,7 @@ export function GenerateButton({ onClick, disabled, loading }: GenerateButtonPro
           'relative px-12 py-4 rounded-2xl font-bold text-md md:text-lg transition-all duration-300 overflow-hidden',
           disabled
             ? 'bg-[#f6df5510] text-[#f6df5550] cursor-not-allowed'
-            : 'bg-[#f6df5550] text-[#0D120E] hover:shadow-2xl neon-glow border-solid bg-[#f6df55] '
+            : 'bg-[#f6df5550] text-[#0b0b09] hover:shadow-2xl neon-glow border-solid bg-[#f6df55] '
         )}
       >
         {loading && (

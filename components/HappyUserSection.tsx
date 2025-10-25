@@ -149,7 +149,7 @@ export function HappyUserSection() {
               onClick={handleCopy}
               className={`px-4 py-2 rounded-xl font-semibold transition-all ${
                 copied
-                  ? 'bg-[#f6df55] text-[#0D120E] transition-all border-2 border-[#f6df55]'
+                  ? 'bg-[#f6df55] text-[#0b0b09] transition-all border-2 border-[#f6df55]'
                   : 'border-2 border-[#f6df5590] text-[#f6df5590] bg-[#f6df5510] hover:border-[#f6df55] hover:text-[#f6df55] transition-all'
               }`}
             >

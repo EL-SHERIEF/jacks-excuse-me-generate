@@ -78,7 +78,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: #0D120E;
+    background: #0b0b09;
     background-attachment: fixed;
     min-height: 100vh;
     font-family: 'Almarai', sans-serif !important;
@@ -88,8 +88,8 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Almarai', sans-serif;
-    font-weight: 700;
+font-family: var(--font-heading), 'Almarai', sans-serif;
+    font-weight: 400;
   }
   
   button, input, select, textarea {
@@ -115,7 +115,7 @@
   .shimmer {
     background: linear-gradient(90deg,
       rgba(255,255,255,0) 0%,
-      rgba(255,255,255,0.2) 50%,
+      rgba(255, 255, 255, 0.07) 50%,
       rgba(255,255,255,0) 100%);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;

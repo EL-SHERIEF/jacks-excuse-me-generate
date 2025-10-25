@@ -217,7 +217,7 @@ export function Leaderboard() {
                             opacity: isExpanded ? 0 : 1,
                             background: isExpanded
                               ? 'linear-gradient(to bottom, transparent, transparent)'
-                              : 'linear-gradient(to bottom, #12171350 30%, #121713 100%)',
+                              : 'linear-gradient(to bottom, #10100e50 30%, #10100e 100%)',
                           }}
                           transition={{ duration: 0.3 }}
                         />
