@@ -314,7 +314,7 @@ export function Leaderboard() {
       )}
 
       <div className="text-center mt-6 text-sm text-[#f6df55]">
-        يتم تحديث القائمة تلقائياً كل 10 ثواني لعرض أحدث وأقوى اعذاركم
+       لا عادي انتا مش في الموود بس
       </div>
     </div>
   );
