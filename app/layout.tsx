@@ -5,7 +5,6 @@ import { Almarai } from "next/font/google";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react"; // optional
-import { GoogleTagManager } from '@next/third-parties/google';
 
 // ---------------------- FONTS ----------------------
 const almarai = Almarai({
@@ -222,7 +221,6 @@ export default function RootLayout({
       </head>
 
       <body className={`${almarai.className} antialiased`}>
-          <GoogleTagManager gtmId="G-K6NKZF5D6H" />
         {children}
         <Toaster position="top-center" richColors />
 

@@ -314,7 +314,11 @@ export function Leaderboard() {
       )}
 
       <div className="text-center mt-6 text-sm text-[#f6df55]">
+<<<<<<< HEAD
        لا عادي يمعلم انا عاذرك انتا مش في الموود بس
+=======
+        يتم تحديث القائمة تلقائياً كل 10 ثواني لعرض أحدث وأقوى اعذاركم
+>>>>>>> parent of a413889 (س)
       </div>
     </div>
   );
