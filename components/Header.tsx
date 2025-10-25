@@ -157,7 +157,7 @@ export function Header() {
         transition={{ duration: 0.6, delay: 0.6 }}
         className={`text-sm md:text-md ${styles.text} mt-4 max-w-2xl mx-auto`}
       >
-        اعذر نفسك مع أول تقنية ذكاء اصطناعي مستخدمة في تكاسل الفريلانسرز
+        أعذر نفسك مع أول تقنية ذكاء اصطناعي مستخدمة في تكاسل الفريلانسرز
       </motion.p>
 
       {/* الشارات */}

@@ -145,7 +145,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_NAME} — أول تقنية ذكاء اصطناعي لخدمة تكاسل وأعذار الفريلانسرز`,
     description:
-      "اعذرني — مولد أعذار مصري للفريلانسرز مدعوم بالذكاء الاصطناعي. جرّبه الآن!",
+      "أعذرني — مولد أعذار مصري للفريلانسرز مدعوم بالذكاء الاصطناعي. جرّبه الآن!",
     images: [OG_IMAGE],
     creator: "@Fullstackahmed",
   },
