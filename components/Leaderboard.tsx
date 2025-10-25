@@ -123,6 +123,7 @@ export function Leaderboard() {
           <span className="font-bold text-[#f6df55] bg-[#f6df5510] px-4 py-1 rounded-xl">
             {totalCount}
           </span>
+          
         </p>
       </motion.div>
 
