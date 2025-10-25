@@ -141,7 +141,7 @@ export function HappyUserSection() {
             <input
               value="https://o3zorni.vercel.app"
               readOnly
-              className="bg-[#f6df5510] text-[#f6df55] px-3 py-2 rounded-lg border border-[#f6df553d] w-56 text-sm text-center"
+              className="bg-[#f6df5510] text-[#f6df55] px-3 py-2 rounded-lg border border-[#f6df553d] w-56 text-sm text-center md:flex hidden"
             />
             <motion.button
               whileHover={{ scale: 1.05 }}

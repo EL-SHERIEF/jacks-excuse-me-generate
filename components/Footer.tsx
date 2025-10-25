@@ -59,7 +59,7 @@ export function Footer() {
             </span>
           </div>
 
-          <div className="flex items-center justify-center gap-2 text-gray-400">
+          <div className="flex items-center justify-center gap-2 text-[#f6df5580]">
             <Heart className="w-4 h-4 text-pink-500 fill-current" />
             <span className="text-sm">
               تم التصميم للفريلانسرز اللي محتاجين بريك إبداعي ولو عندك موظف بيعتذر كتير كلمني هرشدلك عليه يباشا
@@ -73,13 +73,13 @@ export function Footer() {
             </span>
           </div>
 
-          <div className="text-xs text-gray-600 max-w-2xl mx-auto">
+          <div className="text-xs text-[#f6df5580] max-w-2xl mx-auto">
             هذا التطبيق يقوم بتوليد أعذار خيالية باستخدام الذكاء الاصطناعي. كل المحتوى للفكاهة
             وتعلم أنماط التواصل. يرجى دائماً التحلي بالصدق والمهنية في المواقف الحقيقية. لا تستخدم
             هذه الأعذار لخداع الآخرين.
           </div>
 
-          <div className="text-xs text-gray-700">
+          <div className="text-xs text-[#f6df55]">
             جميع الحقوق محفوظة Ahmed Elsherief © {new Date().getFullYear()}
           </div>
         </div>
