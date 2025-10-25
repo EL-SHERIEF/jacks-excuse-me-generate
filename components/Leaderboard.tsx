@@ -1,67 +1,76 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Trophy, Heart, TrendingUp, ChevronDown, ChevronUp, Laugh, Briefcase, Drama } from 'lucide-react';
+import { Trophy, Heart, TrendingUp, ChevronDown, Laugh, Briefcase, Drama } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { getTopExcuses, getTotalExcuseCount, incrementExcuseCount, saveInteraction, type Excuse } from '@/lib/supabase';
+import {
+  getTopExcuses,
+  getTotalExcuseCount,
+  incrementExcuseCount,
+  saveInteraction,
+  type Excuse,
+} from '@/lib/supabase';
 import { Badge } from '@/components/ui/badge';
 import { ReactionBar } from './ReactionBar';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 export function Leaderboard() {
   const [excuses, setExcuses] = useState<Excuse[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedExcuse, setExpandedExcuse] = useState<string | null>(null);
   const [totalCount, setTotalCount] = useState(0);
+  const [limit, setLimit] = useState(20); // ✅ start with 20
+  const [hasMore, setHasMore] = useState(true);
 
-  const fetchExcuses = async () => {
+  const fetchExcuses = async (limitToFetch: number) => {
+    setLoading(true);
     const [topExcuses, count] = await Promise.all([
-      getTopExcuses(100),
-      getTotalExcuseCount()
+      getTopExcuses(limitToFetch),
+      getTotalExcuseCount(),
     ]);
     setExcuses(topExcuses);
     setTotalCount(count);
     setLoading(false);
+    setHasMore(topExcuses.length < count); // ✅ determine if there are more excuses
   };
 
+  // Fetch first 20 on mount
   useEffect(() => {
-    fetchExcuses();
-    const interval = setInterval(fetchExcuses, 10000);
+    fetchExcuses(limit);
+    const interval = setInterval(() => fetchExcuses(limit), 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [limit]);
 
-  if (loading) {
+  const handleLoadMore = async () => {
+    const newLimit = limit + 20;
+    setLimit(newLimit);
+    await fetchExcuses(newLimit);
+  };
+
+  if (loading && excuses.length === 0) {
     return (
-      <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#f6df55] flex items-center justify-center gap-2">
+      <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#f6df55] mb-8 flex items-center justify-center gap-2">
           <Trophy className="w-8 h-8 text-[#f6df55]" />
           أقوى الأعذار
         </h2>
-        <div className="text-center text-[#f6df5580]">جاري التحميل...</div>
+        <div className="text-[#f6df5580]">جاري التحميل...</div>
       </div>
     );
   }
 
   if (excuses.length === 0) {
     return (
-      <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#f6df55] flex items-center justify-center gap-2">
+      <div className="w-full max-w-5xl mx-auto px-4 py-8 mt-2 text-center text-gray-400">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#f6df55] mb-8 flex items-center justify-center gap-2">
           <Trophy className="w-8 h-8 text-[#f6df55]" />
           أقوى الأعذار
         </h2>
-        <div className="text-center text-gray-400">
-          <p>مفيش أعذار لحد دلوقتي. خليك أول من يعتذر!</p>
-        </div>
+        <p>مفيش أعذار لحد دلوقتي. خليك أول من يعتذر!</p>
       </div>
     );
   }
 
-  // ✅ This returns the proper icon for each tone
   const getToneBadgeIcon = (tone: string) => {
     switch (tone) {
       case 'funny':
@@ -92,7 +101,7 @@ export function Leaderboard() {
         user_id: undefined,
       });
 
-      fetchExcuses();
+      fetchExcuses(limit);
     } catch (error) {
       console.error('Error handling reaction:', error);
     }
@@ -117,10 +126,9 @@ export function Leaderboard() {
         </p>
       </motion.div>
 
-      <div className="grid gap-4 md:grid-cols-3 ">
+      <div className="grid gap-4 md:grid-cols-3">
         {excuses.map((excuse, index) => {
           const isExpanded = expandedExcuse === excuse.id;
-
           return (
             <motion.div
               key={excuse.id}
@@ -129,19 +137,13 @@ export function Leaderboard() {
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
               <motion.div
-                onClick={() =>
-                  setExpandedExcuse(isExpanded ? null : excuse.id)
-                }
+                onClick={() => setExpandedExcuse(isExpanded ? null : excuse.id)}
                 className="cursor-pointer group"
                 layout
-                initial={false}
-                transition={{
-                  layout: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
-                }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Card
+                 <Card
                   className={`bg-[#ffffff05] backdrop-blur-sm border-2 ${
                     isExpanded
                       ? 'border-[#f6df55]'
@@ -294,6 +296,21 @@ export function Leaderboard() {
           );
         })}
       </div>
+
+      {/* ✅ Show More Button */}
+      {hasMore && (
+        <div className="flex justify-center mt-8">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            disabled={loading}
+            onClick={handleLoadMore}
+            className="px-6 py-2 text-[#10100e] font-bold bg-[#f6df55] rounded-xl shadow-[0_0_20px_#f6df5530] hover:shadow-[0_0_25px_#f6df5560] transition-all disabled:opacity-60"
+          >
+            {loading ? 'جاري التحميل...' : 'عرض المزيد'}
+          </motion.button>
+        </div>
+      )}
 
       <div className="text-center mt-6 text-sm text-[#f6df55]">
         بتتحدث تلقائيًا كل 10 ثواني لعرض أحدث وأقوى الأعذار!
